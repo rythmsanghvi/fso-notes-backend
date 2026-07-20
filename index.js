@@ -75,12 +75,13 @@ app.post("/api/notes", (request, response) => {
 
 app.put("/api/notes/:id", (request, response) => {
   const id = request.params.id
-  const note = notes.find((note) => note.id === id)
-  if (!note) {
+  const noteToUpdate = notes.find((note) => note.id === id)
+  if (!noteToUpdate) {
     return response.status(404).send("User not Found")
   }
-  note.content = request.body.content
-  note.important = request.body.important
+  noteToUpdate.content = request.body.content
+  noteToUpdate.important = request.body.important
+  response.json(noteToUpdate)
 })
 
 const unknownEndpoint = (request, response) => {
