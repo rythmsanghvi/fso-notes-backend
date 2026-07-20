@@ -34,6 +34,10 @@ app.use(express.json())
 app.use(requestLogger)
 app.use(cors())
 
+app.get("/", (request, response) => {
+  response.send("<h1>Hello World</h1>")
+})
+
 app.get("/api/notes", (request, response) => {
   response.json(notes)
 })
