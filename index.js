@@ -27,12 +27,9 @@ const requestLogger = (request, response, next) => {
   next()
 }
 
-const cors = require("cors")
-
 app.use(express.static("dist"))
 app.use(express.json())
 app.use(requestLogger)
-app.use(cors())
 
 app.get("/", (request, response) => {
   response.send("<h1>Hello World</h1>")
